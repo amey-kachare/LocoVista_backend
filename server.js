@@ -21,9 +21,9 @@ const connect=async()=>{
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-        console.log("monhodb Connected");
+        console.log("mongodb Connected");
     }catch(err){
-        console.log("monhodb Connection fault");
+        console.log("mongodb Connection fault");
     }
 }
 
