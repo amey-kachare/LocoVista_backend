@@ -11,10 +11,10 @@ import { verifyUser } from '../utils/verifyToken';
 
 router.put('/:id', verifyUser, updateUser);
 
-router.delete('/:id', deleteUser);
+router.delete('/:id',verifyUser, deleteUser);
 
 router.get('/:id', verifyUser, getSingleUser);
 
-router.get('/', getAllUser);
+router.get('/',verifyUser, getAllUser);
 
 export default router;
