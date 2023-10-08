@@ -4,10 +4,10 @@ import {
     getAllUser,
     getSingleUser,
     updateUser,
-} from '../controller/userController';
+} from '../controller/userController.js';
 const router = express.Router();
 
-import { verifyUser } from '../utils/verifyToken';
+import { verifyUser } from '../utils/verifyToken.js';
 
 router.put('/:id', verifyUser, updateUser);
 

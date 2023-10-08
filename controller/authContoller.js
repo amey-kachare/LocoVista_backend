@@ -58,7 +58,7 @@ export const login = async (req, res) => {
         //create jwt token
         const token = jwt.sign(
             { id: user._id, role: user.role },
-            process.env.WT_SECRET_KEY,
+            process.env.JWT_SECERET_KEY,
             { expiresIn: '15d' }
         );
 
@@ -75,6 +75,7 @@ export const login = async (req, res) => {
                 role,
             });
     } catch (err) {
+        console.log(err)
         res.status(500).json({ success: false, message: 'Failed to login' });
     }
 };
