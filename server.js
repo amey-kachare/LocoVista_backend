@@ -26,6 +26,7 @@ const connect = async () => {
         await mongoose.connect(process.env.connection_string, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
+
         });
         console.log('MongoDB Connected');
     } catch (err) {
