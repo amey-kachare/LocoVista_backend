@@ -12,7 +12,7 @@ const app = express();
 const port = process.env.PORT || 8000;
 const corsOptions = {
     origin: true,
-    credentials: true
+    credentials: true,
 };
 
 // app.get("/",(res,req)=>{
@@ -26,7 +26,6 @@ const connect = async () => {
         await mongoose.connect(process.env.connection_string, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-
         });
         console.log('MongoDB Connected');
     } catch (err) {
