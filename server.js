@@ -1,11 +1,11 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import mongoose from 'mongoose';
-import cookieParser from 'cookie-parser';
-import authRoute from './routes/auth.js';
-import tourRoute from './routes/tour.js';
-import userRoute from './routes/users.js';
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
+import authRoute from "./routes/auth.js";
+import tourRoute from "./routes/tour.js";
+import userRoute from "./routes/users.js";
 
 dotenv.config();
 const app = express();
@@ -20,16 +20,16 @@ const corsOptions = {
 // })
 
 //connect mongodb
-mongoose.set('strictQuery', false);
+mongoose.set("strictQuery", false);
 const connect = async () => {
     try {
         await mongoose.connect(process.env.connection_string, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
-        console.log('MongoDB Connected');
+        console.log("MongoDB Connected");
     } catch (err) {
-        console.log('MongoDB Connection fault');
+        console.log("MongoDB Connection fault");
     }
 };
 
@@ -37,11 +37,11 @@ const connect = async () => {
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(cookieParser());
-app.use('/api/v1/auth', authRoute);
-app.use('/api/v1/tours', tourRoute);
-app.use('/api/v1/users', userRoute);
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/tours", tourRoute);
+app.use("/api/v1/users", userRoute);
 
 app.listen(port, () => {
     connect();
-    console.log('server is listening on port', port);
+    console.log("server is listening on port", port);
 });

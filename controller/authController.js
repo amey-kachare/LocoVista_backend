@@ -1,6 +1,6 @@
-import User from '../models/User.js';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import User from "../models/User.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 //user register
 export const register = async (req, res) => {
@@ -19,10 +19,10 @@ export const register = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            message: 'Successfully registered!',
+            message: "Successfully registered!",
         });
     } catch (err) {
-        res.status(200).json({ success: false, message: 'Failed to create!' });
+        res.status(200).json({ success: false, message: "Failed to create!" });
     }
 };
 
@@ -35,7 +35,7 @@ export const login = async (req, res) => {
         if (!user) {
             return res
                 .status(404)
-                .json({ success: false, message: 'User not found!' });
+                .json({ success: false, message: "User not found!" });
         }
 
         //check password if user exists
@@ -50,7 +50,7 @@ export const login = async (req, res) => {
         if (!checkCorrectPassword) {
             return res
                 .status(401)
-                .json({ success: false, message: 'Wrong password!' });
+                .json({ success: false, message: "Wrong password!" });
         }
 
         const { password, role, ...rest } = user._doc;
@@ -59,10 +59,10 @@ export const login = async (req, res) => {
         const token = jwt.sign(
             { id: user._id, role: user.role },
             process.env.JWT_SECERET_KEY,
-            { expiresIn: '15d' }
+            { expiresIn: "15d" }
         );
 
-        res.cookie('accessToken', token, {
+        res.cookie("accessToken", token, {
             httpOnly: true,
             expires: token.expiresIn,
         })
@@ -70,12 +70,12 @@ export const login = async (req, res) => {
             .json({
                 token,
                 success: true,
-                message: 'successfully login',
+                message: "successfully login",
                 data: { ...rest },
                 role,
             });
     } catch (err) {
-        console.log(err)
-        res.status(500).json({ success: false, message: 'Failed to login' });
+        console.log(err);
+        res.status(500).json({ success: false, message: "Failed to login" });
     }
 };

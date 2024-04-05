@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 import {
     createTour,
     updateTour,
@@ -8,26 +8,25 @@ import {
     getTourBySearch,
     getFeaturedTour,
     getTourCount,
-} from '../controller/tourController.js';
-import { verifyAdmin } from '../utils/verifyToken.js';
-
+} from "../controller/tourController.js";
+import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
 
-router.post('/',verifyAdmin, createTour);
+router.post("/", verifyAdmin, createTour);
 
-router.put('/:id',verifyAdmin, updateTour);
+router.put("/:id", verifyAdmin, updateTour);
 
-router.delete('/:id',verifyAdmin, deleteTour);
+router.delete("/:id", verifyAdmin, deleteTour);
 
-router.get('/:id', getSingleTour);
+router.get("/:id", getSingleTour);
 
-router.get('/', getAllTour);
+router.get("/", getAllTour);
 
-router.get('/search/getTourBySearch', getTourBySearch);
+router.get("/search/getTourBySearch", getTourBySearch);
 
-router.get('/search/getFeaturedTours', getFeaturedTour);
+router.get("/search/getFeaturedTours", getFeaturedTour);
 
-router.get('/search/getTourCount', getTourCount);
+router.get("/search/getTourCount", getTourCount);
 
 export default router;
