@@ -7,6 +7,7 @@ export const verifyToken = (req, res, next) => {
             .status(401)
             .json({ success: false, message: "You're not authorize" });
     }
+    console.log('Received Token:', token);
     // if token is exist then verify the token
     jwt.verify(token, process.env.JWT_SECERET_KEY, (err, user) => {
         if (err) {
