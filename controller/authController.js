@@ -22,7 +22,7 @@ export const register = async (req, res) => {
             message: "Successfully registered!",
         });
     } catch (err) {
-        res.status(200).json({ success: false, message: "Failed to create!" });
+        res.status(500).json({ success: false, message: "Failed to create!" });
     }
 };
 
